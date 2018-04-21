@@ -1,4 +1,16 @@
-# Mechanisms
+# Table of Contents
+- [Mechanisms](#mechanisms)
+- [Try/Catch/Throw](#tct)
+    - [Multiple catch blocks](#multicatch)
+- [Re-throw](#rethrow)
+- [Throwing New Exception](#new)
+- [Stack Unwinding](#unwinding)
+    - [Graceful Stack Unwinding](#graceful)
+- [Customized Termination](#termination)
+    - [Uncaught Exceptions](#uncaught)
+- [Exception Specifications](#exception)
+
+# Mechanisms <a name="mechanisms"></a>
 * try/thow/catch
 
 ```c++
@@ -16,7 +28,7 @@ void func(){
     //do more stuff
 }
 ```
-# Try/Throw/Catch
+# Try/Throw/Catch <a name="tct"></a>
 * throw
     * statement that generates exception
     * may be located:
@@ -40,7 +52,8 @@ void func(){
             }
         }
     ```
-## Multiple **catch** blocks
+    
+#### Multiple **catch** blocks <a name="multicatch"></a>
 * throw statement has one parameter
     - eg) **throw "divided by zero";**
 * catch block with matching parameter gets to execute
@@ -76,7 +89,7 @@ void func(){
     }
     ```
 
-# Re-throw
+# Re-throw <a name="rethrow"></a>
 * exception may be caught and thrown again for:
     - nested error handling
     - cleanup
@@ -106,7 +119,7 @@ void func(){
     }
 ```
 
-# Throwing New Exception
+# Throwing New Exception <a name="new"></a>
 * one exception may be caught and new one thrown
 ```c++
     float divide(int a, int b){
@@ -133,7 +146,7 @@ void func(){
     }
 ```
 
-# Stack Unwinding
+# Stack Unwinding <a name="unwinding"></a>
 * process of transferring control flow due to exception
 * initiated at **throw** statement
 * control handed over to matching **catch** block
@@ -150,7 +163,7 @@ void func(){
     - memory not deallocated
     - inconsistent state
 
-### Graceful Stack Unwinding
+#### Graceful Stack Unwinding <a name="graceful"></a>
 1. put all pointers in **catch** parameter
     * cleanup occurs in **catch** block
     * **UGLY** violates every rule of OO design
@@ -193,7 +206,7 @@ void func(){
     }
     ```
 
-# Customized Termination
+# Customized Termination <a name="termination"></a>
 * custom functions can be written to handle failures
     - terminate
         - custom function executes, then normal **terminate** function
@@ -201,7 +214,7 @@ void func(){
     - abort
         - **_no destructors execute!_**
 
-### Uncaught Exceptions
+#### Uncaught Exceptions <a name="uncaught"></a>
 * no matching **catch** block --> call **terminate()** --> call **abort()**
 * use **set_terminate()** to introduce custom processing
 ```c++
@@ -225,7 +238,7 @@ void func(){
     }
 ```
 
-# Exception Specifications
+# Exception Specifications <a name="exception"></a>
 * function declaration may specify types of exceptions
 ```c++
     int func(int x) throw(int, Error_message){ /* ... */}
