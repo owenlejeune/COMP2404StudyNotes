@@ -52,7 +52,7 @@ void func(){
             }
         }
     ```
-    
+
 #### Multiple **catch** blocks <a name="multicatch"></a>
 * throw statement has one parameter
     - eg) **throw "divided by zero";**
@@ -66,7 +66,7 @@ void func(){
     - catch all
 - example
 
-    ![](sportseqpt.png)
+    ![](Images/sportseqpt.png)
 
     ```c++
     void func(){
